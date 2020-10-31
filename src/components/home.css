@@ -1,16 +1,59 @@
 .home{
+    height:100%;
+    display:grid;
+    grid-template-columns: 2fr 8fr 2fr;
+   background:#efcded;
     
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
+.sidebar-left {
+   height:100%;
+   background-color: #be5ed4;
+
+     
+}
+
+ .sidebar-right{
+    height:100%;
+    background-color: #be5ed4;
 }
 .quizContent{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    color:#333;
+    margin-top: 40px;
+    text-align: center;
+     
 }
+h1{
+    color:#be5ed4;
+}
+.intro{
+
+    text-align: center;
+    width:80%;
+    margin:auto;
+    margin-top: 50px;
+}
+p{
+    font-size: large
+    ;
+    margin-bottom: 20px;
+}
+ ul{
+     width:100%;
+     list-style: none;
+     display:flex;
+     flex-direction: column;
+    
+      
+ }
+ li{
+     width:100%;
+     margin:10px 0px;
+
+ }
+ a{
+     text-decoration: none;
+     color:#f9effb;
+
+ }
 .quiz1{
     display:flex;
     flex-direction: column;
@@ -37,11 +80,12 @@
 }
 Link{
     width:100px;
+    text-decoration: none;
      
 }
- .btn{
+ button{
      text-decoration: none;
-     background-color:#fff ;
+     background-color:#be5ed4 ;
      width:100px;
      font-size:20px;
      padding:10px;

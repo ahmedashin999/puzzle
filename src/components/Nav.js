@@ -1,15 +1,17 @@
 import React,{useState} from 'react';
-import{Route} from 'react-router-dom'
-import firebase from 'firebase';
- import Home from './Home'
+import clsx from 'clsx';
+//component import
+import Home from './Home'
  import QuizOne from './QuizOne'
  import Result from './Result'
  import CountDown from './CountDown'
  import Leaderboard from './Leaderboard'
  import Login from './Login';
  import UserInfo from './UserInfo'
- import {Link} from 'react-router-dom'
-import clsx from 'clsx';
+ import HowToPlay from './HowToPlay'
+
+import firebase from 'firebase';
+import {Link,Route} from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
@@ -17,17 +19,17 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Switch from '@material-ui/core/Switch';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+ 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -41,34 +43,21 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display:'flex',
-     
-     
-    // display: 'flex',
-    // justifyContent:'space-between',
-    // position:'absolute',
-    // top:'56px',
-    // width:'100%',
-    // background:'#efcded',
-    // height: '100vh',
-    
+    display: 'flex',
+    height:'100vh',
+    background:'#efcded'
     
   },
-  // title: {
-  //   flexGrow: 1,
-  // },
-   
   appBar: {
     background:'#be5ed4',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-      
     }),
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft:   drawerWidth,
+    marginLeft: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -79,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
         display:'none'
     },
     marginRight: theme.spacing(2),
-
   },
   iconButton:{
     [theme.breakpoints.down("md")]:{
@@ -114,29 +102,11 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-     
   },
   drawerPaper: {
     width: drawerWidth,
-
   },
-  // drawerHeader: {
-  //   //   height:'0vh',
-  //   //   overflowX:'hidden',
-  //   // display: 'flex',
-  //   // alignItems: 'center',
-  //   // display:'flex',
-  //   // alignItems:'center',
-    
-  //   // padding: theme.spacing(0, 1),
-  //   // necessary for content to be below app bar
-  //   display:'flex',
-  //   justifyContent:'center',
-  //   marginRight:'auto',
-  //   ...theme.mixins.toolbar,
-  //   // justifyContent: 'flex-end',
-  // },
-  drawerHeader:{
+  drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
@@ -144,12 +114,6 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
-  // drawerHome:{
-  //    top:'80px'
-  // },
-  // nested: {
-  //   paddingLeft: theme.spacing(4),
-  // },
   content: {
     flexGrow: 1,
     padding: theme.spacing(0),
@@ -157,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft:  -drawerWidth,
+    marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -168,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-  function  Navbar() {
+export default function Nav() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -177,11 +141,11 @@ const useStyles = makeStyles((theme) => ({
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchor, setAnchor] = React.useState(null);
   const opens = Boolean(anchorEl);
-  
-const handleList=()=>{
+  const handleList=()=>{
     setListOpen(!listOpen)
 }
-  const handleChange = (event) => {
+
+const handleChange = (event) => {
     setAuth(event.target.checked);
   };
  
@@ -193,14 +157,6 @@ const handleList=()=>{
     setAnchorEl(event.currentTarget);
   };
    
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-  
   const handleClick = (event) => {
     setAnchor(event.currentTarget);
   };
@@ -208,16 +164,16 @@ const handleList=()=>{
   const handleCloseBtn = () => {
     setAnchor(null);
   };
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={classes.root}>
-          <FormGroup>
-        <FormControlLabel
-        checked={auth}
-          control={<Switch   onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -251,10 +207,10 @@ const handleList=()=>{
         onClose={handleCloseBtn}
       >
         <MenuItem onClick={handleCloseBtn}>
-        <Link className={classes.linkMenu} to="/quiz1">Quiz 1</Link>
+        <Link className={classes.linkMenu} to="/how-to-play">Quiz 1</Link>
            </MenuItem>
         <MenuItem onClick={handleCloseBtn}>
-        <Link className={classes.linkMenu} to="/quiz1">Quiz 2</Link>
+        <Link className={classes.linkMenu} to="/how-to-play">Quiz 2</Link>
           </MenuItem>
         
       </Menu>
@@ -271,7 +227,8 @@ const handleList=()=>{
     <Button className={classes.quizBtn} aria-controls="simple-menu" aria-haspopup="true" >
         ....
       </Button>
-          {auth && (
+       
+          
             <div className={ classes.iconButton}>
               <Button 
                
@@ -304,8 +261,6 @@ const handleList=()=>{
                 <MenuItem onClick={()=>firebase.auth().signOut()}>Logout</MenuItem>
               </Menu>
             </div>
-          )}
-          {/* <button onClick={ }>Sign Out</button> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -323,7 +278,6 @@ const handleList=()=>{
           </IconButton>
         </div>
         <Divider />
-       
         <List>
             <ListItem button onClick={handleList}>
                 <ListItemText primary="Quiz"/> 
@@ -357,7 +311,6 @@ const handleList=()=>{
         </List>
         
        
-        
       </Drawer>
       <main
         className={clsx(classes.content, {
@@ -365,20 +318,18 @@ const handleList=()=>{
         })}
       >
         <div className={classes.drawerHeader} />
-         <div>
-             {/* <Route exact path="/" component={Home}/>
+        <>
+             <Route exact path="/" component={Home}/>
              <Route path="/quiz1" component={QuizOne}/>
              <Route path="/result" component={Result}/>
              <Route path="/countdown" component={CountDown}/>
              <Route path="/leaderboard" component={Leaderboard}/>
              <Route path="/login" component={Login}/>
-             <Route path="/userinfo" component={UserInfo}/> */}
-             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, facere?
-         </div>
-        
+             <Route path="/userinfo" component={UserInfo}/>
+             <Route path="/how-to-play" component={HowToPlay}/>
+ 
+         </>
       </main>
-      </div>
-     
+    </div>
   );
 }
-export default  Navbar;

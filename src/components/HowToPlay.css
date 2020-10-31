@@ -1,0 +1,28 @@
+.container{
+    margin-top: 30px;
+    height:60%;
+    background-color: #efcded;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    color:#be5ed4;
+}
+.box{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:600px;
+    height:600px;
+    background-color: #be5ed4;
+    border-radius: 15px;
+    color:#efcded;
+}
+.btn{
+    background-color: #efcded;
+    color:#333;
+    margin-top: 20px;
+}
