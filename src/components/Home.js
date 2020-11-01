@@ -29,7 +29,7 @@ function Home() {
 
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas quisquam, quod nesciunt labore, nihil perferendis quaerat eaque sapiente maiores ratione sed, fugit expedita. Aspernatur illum accusantium itaque commodi minus similique!
                         </p>
-                        <Link to="/how-to-play" > <button className="btn">
+                        <Link to="/how-to-play" > <button className="Btn">
                              Start
                              </button> </Link>
                          
@@ -52,10 +52,10 @@ function Home() {
                 
             </div>
              
-            {/* <div className="footer">
+            <div className="footer">
             This is some content in footer
         </div>
-              */}
+             
         </div>
     )
 }

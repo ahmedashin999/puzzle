@@ -1,22 +1,32 @@
 .home{
-    height:100%;
+    height:90vh;
     display:grid;
-    grid-template-columns: 2fr 8fr 2fr;
+    /* grid-template-columns: 2fr 8fr 2fr; */
+    grid-template-areas: 
+    'sidebar-left  quiz quiz sidebar-right'
+    'footer footer footer footer';
    background:#efcded;
     
 }
 .sidebar-left {
-   height:100%;
+    width:200px;
+    grid-area: sidebar-left;
+   /* height:100%; */
    background-color: #be5ed4;
+   height:90vh;
 
      
 }
 
  .sidebar-right{
-    height:100%;
+    width:200px;
+    grid-area: sidebar-right;
+    /* height:100%; */
     background-color: #be5ed4;
 }
 .quizContent{
+    /* width:600px; */
+    grid-area: quiz;
     margin-top: 40px;
     text-align: center;
      
@@ -83,10 +93,21 @@ Link{
     text-decoration: none;
      
 }
- button{
+ .Btn{
      text-decoration: none;
      background-color:#be5ed4 ;
-     width:100px;
+     width:150px;
      font-size:20px;
      padding:10px;
+     color:#fff;
+ }
+ .footer{
+     grid-area: footer;
+     height:40px;
+     text-align: center;
+     display:flex;
+     justify-content: center;
+     align-items: center;
+     /* margin-top: 50px; */
+     background:#efcded;
  }

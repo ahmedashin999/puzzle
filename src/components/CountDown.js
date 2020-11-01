@@ -9,12 +9,14 @@ function CountDown() {
         if(completed) {
          return   <QuizOne/>
         }else{
-    return <div className="timer">{seconds}</div>}
+    return <div className="countdown">
+        <div className="timer">{seconds}</div>
+    </div>  }
 
     } 
      
     return (
-        <Countdown
+        <Countdown  
         date={Date.now() + 3000}
           renderer={renderer}
        > 

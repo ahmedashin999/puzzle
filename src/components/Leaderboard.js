@@ -2,6 +2,7 @@ import React from 'react'
 import './leaderboard.css'
 function Leaderboard() {
     return (
+        <div className="table"> 
         <div className="table-content">
             <table>
                 <tr>
@@ -22,6 +23,7 @@ function Leaderboard() {
 
 
             </table>
+        </div>
         </div>
     )
 }

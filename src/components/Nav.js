@@ -44,7 +44,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    height:'100vh',
+     
     background:'#efcded'
     
   },
@@ -256,7 +256,7 @@ const handleChange = (event) => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>
-                  <Link to="/login">Sign Up</Link>
+                  <Link style={{color:'#333'}} to="/login">Sign Up</Link>
                    </MenuItem>
                 <MenuItem onClick={()=>firebase.auth().signOut()}>Logout</MenuItem>
               </Menu>

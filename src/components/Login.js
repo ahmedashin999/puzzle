@@ -28,7 +28,7 @@ componentDidMount=()=>{
 }
     render() {
         return (
-            <div>
+            <div style={{height:'90vh'}}>
                 {this.state.isSignedIn ? (
                     <>
                     <UserInfo/>
