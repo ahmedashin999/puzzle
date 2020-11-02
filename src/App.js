@@ -1,9 +1,6 @@
  import React from 'react';
 import './App.css';
-import  Navbar from './components/Navbar'
 import Nav from './components/Nav'
-import QuizOne from './components/QuizOne'
-import Footer from './components/Footer';
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom'
 import Home from './components/Home';
 function App() {

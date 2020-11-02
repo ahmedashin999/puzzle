@@ -15,7 +15,7 @@ function HowToPlay() {
                     <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
                 </ul>
                 <Link to="/countdown">
-                    <button className="btn">Play</button>
+                    <button className="play-btn">Play</button>
                 </Link>
             </div>
         </div>

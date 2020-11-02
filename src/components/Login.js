@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import firebase from 'firebase'
 import UserInfo from './UserInfo';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import CountDown from './CountDown';
-firebase.initializeApp({
-    apiKey: "AIzaSyCFH1_wi6LcSWicrQywpDJgX8DdNLqENPc",
-    authDomain: "practice-c4e4f.firebaseapp.com",
-})
+// firebase.initializeApp({
+//     apiKey: "AIzaSyCFH1_wi6LcSWicrQywpDJgX8DdNLqENPc",
+//     authDomain: "practice-c4e4f.firebaseapp.com",
+// })
   class SignUp extends Component {
 
     state={isSignedIn:false}

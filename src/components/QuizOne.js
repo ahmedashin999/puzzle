@@ -2,17 +2,23 @@ import React, {useState, useEffect} from 'react'
 import './quiz.css'
 import {BsFillForwardFill} from 'react-icons/bs';
 // import ProgressBar from './ProgressBar'
-import firebase from 'firebase'
+ 
+import db from '../Fire'
 function QuizOne() {
-  
+  const[quizData,setQuizData]=useState([])
     let sound = new Audio("../../assets/sounds/countdown.mp3");
-    const quizData=[
-        {
-          question:'The usually round,red or yellow,edible fruit of a small tree',
-          correctAnswer:'APPLE'
-        },
+    // const quizData=[
+    //     {
+    //       question:'The usually round,red or yellow,edible fruit of a small tree',
+    //       correctAnswer:'APPLE'
+    //     },
          
-      ]
+    //   ]
+    useEffect(()=>{
+      db.collection('quizData').onSnapshot(snapshot=>{
+        setQuizData(snapshot.docs.map(doc =>doc.data()))
+      })
+    })
 
       /**
        * Playing Sound When Correct Button Presseds

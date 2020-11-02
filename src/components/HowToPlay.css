@@ -21,10 +21,26 @@ h2{
     border-radius: 15px;
     color:#efcded;
 }
-.btn{
+.play-btn{
     background-color: #efcded;
     color:#333;
     margin-top: 20px;
     width:150px;
  margin-bottom:20px;
+}
+
+
+/* Media query */
+
+@media only screen and (max-width:668px) {
+     .box{
+         width:100%;
+         background-color: transparent;
+         color:#333;
+         text-align: center;
+     }
+     .play-btn{
+         background-color: #be5ed4;
+         color:#fff;
+     }
 }

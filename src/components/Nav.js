@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import clsx from 'clsx';
 //component import
 import Home from './Home'
@@ -9,6 +9,7 @@ import Home from './Home'
  import Login from './Login';
  import UserInfo from './UserInfo'
  import HowToPlay from './HowToPlay'
+ 
 
 import firebase from 'firebase';
 import {Link,Route} from 'react-router-dom'
@@ -24,20 +25,18 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Switch from '@material-ui/core/Switch';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
- 
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
+import PersonIcon from '@material-ui/icons/Person';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
 
+
+ 
 
 const drawerWidth = 240;
 
@@ -135,12 +134,15 @@ const useStyles = makeStyles((theme) => ({
 export default function Nav() {
   const classes = useStyles();
   const theme = useTheme();
+  
   const [open, setOpen] = React.useState(false);
   const[listOpen,setListOpen]=useState(true);
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchor, setAnchor] = React.useState(null);
   const opens = Boolean(anchorEl);
+ 
+
   const handleList=()=>{
     setListOpen(!listOpen)
 }
@@ -230,6 +232,7 @@ const handleChange = (event) => {
        
           
             <div className={ classes.iconButton}>
+               
               <Button 
                
                 aria-label="account of current user"
@@ -238,6 +241,9 @@ const handleChange = (event) => {
                 onClick={handleMenu}
                 color="inherit"
               >
+                <IconButton>
+                <AccountCircle/>
+              </IconButton>
                  Login
               </Button>
               <Menu
@@ -286,20 +292,28 @@ const handleChange = (event) => {
             <Collapse in={listOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
           <ListItem button className={classes.nested}>
+             <Link to="/how-to-play">
+             {/* <ListItemText primary="Quiz 1" /> */}
+             <button  style={{backgroundColor:'transparent',textAlign:'center',width:'100%'}}> Quiz 1</button>
              
-            <ListItemText primary="Quiz 1" />
+             </Link>
             
           </ListItem>
           <ListItem button className={classes.nested}>
-             
-            <ListItemText primary="Quiz 1" />
+              <Link to="/how-to-play">
+              <button  style={{backgroundColor:'transparent',textAlign:'center',width:'100%'}}> Quiz 2</button>
+              </Link>
+            {/* <ListItemText primary="Quiz 2" /> */}
             
           </ListItem>
         </List>
             </Collapse>
             <ListItem button>
          
-        <ListItemText primary="Leaderboard" />
+        {/* <ListItemText primary="Leaderboard" /> */}
+        <Link to="/leaderboard">
+          <button  style={{backgroundColor:'transparent',textAlign:'center',width:'100%'}}>Leaderboard</button>
+        </Link>
       </ListItem>
       <ListItem button>
         
