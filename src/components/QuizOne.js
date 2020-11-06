@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import './quiz.css'
 import {BsFillForwardFill} from 'react-icons/bs';
-// import ProgressBar from './ProgressBar'
+import ProgressBar from './ProgressBar'
  
-import db from '../Fire'
-function QuizOne() {
-  const[quizData,setQuizData]=useState([])
+// import db from '../Fire'
+function QuizOne({quizData}) {
+  // const[quizData,setQuizData]=useState([])
     let sound = new Audio("../../assets/sounds/countdown.mp3");
     // const quizData=[
     //     {
@@ -14,16 +14,18 @@ function QuizOne() {
     //     },
          
     //   ]
-    useEffect(()=>{
-      db.collection('quizData').onSnapshot(snapshot=>{
-        setQuizData(snapshot.docs.map(doc =>doc.data()))
-      })
-    })
+    
 
       /**
        * Playing Sound When Correct Button Presseds
        */
       const playCorrect = () => sound.play();
+      // index of quizData
+      const[quizIndex,setQuizIndex]=useState(0)
+      //index of question
+      const[currentQues,setCurrentQues]=useState(0)
+      //index of correct answer
+      const[currentAns,setCorrectAns]=useState(0)
 
       /** Splited Array of Answer Letter */
       const [answerWord, setAnswerWord] = useState([]);
@@ -50,9 +52,10 @@ function QuizOne() {
         if(ans === quizData[0].correctAnswer[currentIndex]){
             playCorrect();
             setCorrectSuffledIndexList([...correctSuffledIndexList, shuffledIndex])
-            setCurrentIndex(currentIndex+1);
+            // setCurrentIndex(currentIndex+1);
             if (currentIndex === quizData[0].correctAnswer.length - 1) {
-              gotToNext()
+              gotToNext();
+               
             }
         }
         
@@ -87,8 +90,9 @@ function QuizOne() {
     const resetCurrentStage = () => {
       setAnswerWord([]);
       setCorrectSuffledIndexList([])
-      setCurrentIndex(0);
+      // setCurrentIndex(quizIndex+ 1);
       setAnswerWord(shuffle(quizData[0].correctAnswer))
+      // setCurrentQues(currentQues + 1)
     }
 
     /**
@@ -106,11 +110,15 @@ function QuizOne() {
           
       }
   }, [])
+  const nextQuestion =()=>{
+    gotToNext();
+    // setCurrentQues(currentQues + 1)
+  }
  
     return (
         <div className="quiz">
             <div className="quiz-content">
-            {/* <ProgressBar/> */}
+            <ProgressBar/>
             <button className="button">POINT</button>
               {quizData.map(ques=>(
                 <p className="ques">{ques.question}</p>
@@ -143,7 +151,7 @@ function QuizOne() {
         </div>
 
              <button className="btn-icon">
-                 <BsFillForwardFill/>
+                 <BsFillForwardFill onClick={nextQuestion}/>
              </button>
              {/* <button className="sign-out" onClick={()=>firebase.auth().signOut()}>Sign Out</button> */}
         </div>
